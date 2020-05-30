@@ -4,9 +4,7 @@ node_js:
 sudo: required
 services:
   - docker
-branches:
-  only:
-    - master
+
 before_script:
   - cd ./server && npm install
   - cd .. && cd ./client && npm install
@@ -17,6 +15,7 @@ script:
   - cd ../client && docker build -t client .
   - cd ../db && docker build -t db .  
 after_success:
+  - test $TRAVIS_BRANCH = "xd"
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker tag server $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
