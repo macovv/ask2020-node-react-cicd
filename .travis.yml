@@ -4,9 +4,6 @@ node_js:
 sudo: required
 services:
   - docker
-branches:
- - only:
-   - masster
 before_script:
   - cd ./server && npm install
   - cd ../client && npm install
