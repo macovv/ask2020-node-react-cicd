@@ -26,7 +26,13 @@ services:
 #   - docker push $DOCKER_USER/db:$TRAVIS_BUILD_NUMBER
 #   - docker tag db $DOCKER_USER/db:latest
 #   - docker push $DOCKER_USER/db:latest
- 
+
+-stages:
+  - clientTest
+  - serverTest
+#   - name: dockerhubPush
+#   if: branch = master
+
 jobs:
  include:
    - stage: clientTest
@@ -43,24 +49,20 @@ jobs:
         - npm test
       after_success:
         - docker build -t server .
-   - stage: dockerhubPush
-      after_success:
-          - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          - docker tag server $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
-          - docker push $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
-          - docker tag server $DOCKER_USER/server:latest
-          - docker push $DOCKER_USER/server:latest
-          - docker tag client $DOCKER_USER/client:$TRAVIS_BUILD_NUMBER
-          - docker push $DOCKER_USER/client:$TRAVIS_BUILD_NUMBER
-          - docker tag client $DOCKER_USER/client:latest
-          - docker push $DOCKER_USER/client:latest
-          - docker tag db $DOCKER_USER/db:$TRAVIS_BUILD_NUMBER
-          - docker push $DOCKER_USER/db:$TRAVIS_BUILD_NUMBER
-          - docker tag db $DOCKER_USER/db:latest
-          - docker push $DOCKER_USER/db:latest
--stages:
-  - clientTest
-  - serverTest
-  - name: dockerhubPush
-  if: branch = master
+#    - stage: dockerhubPush
+#       after_success:
+#           - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+#           - docker tag server $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
+#           - docker push $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
+#           - docker tag server $DOCKER_USER/server:latest
+#           - docker push $DOCKER_USER/server:latest
+#           - docker tag client $DOCKER_USER/client:$TRAVIS_BUILD_NUMBER
+#           - docker push $DOCKER_USER/client:$TRAVIS_BUILD_NUMBER
+#           - docker tag client $DOCKER_USER/client:latest
+#           - docker push $DOCKER_USER/client:latest
+#           - docker tag db $DOCKER_USER/db:$TRAVIS_BUILD_NUMBER
+#           - docker push $DOCKER_USER/db:$TRAVIS_BUILD_NUMBER
+#           - docker tag db $DOCKER_USER/db:latest
+#           - docker push $DOCKER_USER/db:latest
+
 
