@@ -6,7 +6,7 @@ services:
   - docker
 branches:
  - only:
-   - mastvor
+   - masster
 before_script:
   - cd ./server && npm install
   - cd ../client && npm install
