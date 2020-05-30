@@ -6,13 +6,12 @@ services:
   - docker
 branches:
  - only:
-   - mastor
+   - mastvor
 before_script:
   - cd ./server && npm install
-  - cd .. && cd ./client && npm install
+  - cd ../client && npm install
 script:
   - npm test && cd ../server && npm test
-#   - cd ./server && npm test
   - docker build -t server .
   - cd ../client && docker build -t client .
   - cd ../db && docker build -t db .  
