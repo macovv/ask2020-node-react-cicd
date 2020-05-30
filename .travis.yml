@@ -36,7 +36,7 @@ jobs:
         - npm test
       after_success:
         - docker build -t client .
-   - stage: serverTesst
+   - stage: serverTest
       before_script:
         - cd ./server &&  npm install
       script:
