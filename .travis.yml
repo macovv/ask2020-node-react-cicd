@@ -18,7 +18,7 @@ after_success:
   - docker tag node-svr $DOCKER_USER/node-svr:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USER/node-svr:$TRAVIS_BUILD_NUMBER
   - docker tag node-svr $DOCKER_USER/node-svr:latest
-  - docker push $DOCKER_USER/react-client:latest
+  - docker push $DOCKER_USER/node-svr:latest
   - docker tag react-client $DOCKER_USER/react-client:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USER/react-client:$TRAVIS_BUILD_NUMBER
   - docker tag react-client $DOCKER_USER/react-client:latest
