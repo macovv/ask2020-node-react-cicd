@@ -5,13 +5,15 @@ sudo: required
 services:
   - docker
 before_script:
-  - npm install
+  - cd ./server && npm install
+  - cd .. && cd ./client && npm install
 script:
-  - npm test
-  - docker build -t server .
-after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-  - docker tag server $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
-  - docker push $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
-  - docker tag server $DOCKER_USER/server:latest
-  - docker push $DOCKER_USER/server:latest
+  - npm test && cd ..
+  - cd ./server && npm test
+#   - docker build -t server .
+# after_success:
+#   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+#   - docker tag server $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
+#   - docker push $DOCKER_USER/server:$TRAVIS_BUILD_NUMBER
+#   - docker tag server $DOCKER_USER/server:latest
+#   - docker push $DOCKER_USER/server:latest
