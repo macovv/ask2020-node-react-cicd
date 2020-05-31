@@ -6,8 +6,8 @@ services:
   - docker
 stages:
   - Tests
-  - Publish 
-    if: branch = master
+  - name: Publish
+    if: (branch = master)
 jobs:
   include:
     - stage: Tests
