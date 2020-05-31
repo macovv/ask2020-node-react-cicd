@@ -7,7 +7,7 @@ services:
 stages:
   -Tests
   -Publish
-   if: branch = master
+#    if: branch = master
 jobs:
   include:
     - stage: Tests
