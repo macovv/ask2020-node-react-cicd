@@ -16,7 +16,7 @@ jobs:
         - cd ../client && npm install
       script:
         - npm test && cd ../server && npm test
-     - stage: Publish
+    - stage: Publish
       script: 
         - cd ./server && docker build -t server .
         - cd ../client && docker build -t client .
