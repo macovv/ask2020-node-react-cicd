@@ -5,9 +5,9 @@ sudo: required
 services:
   - docker
 stages:
-  -Tests
-  -Publish
-   if: branch = master
+  - Tests
+  - Publish 
+    if: branch = master
 jobs:
   include:
     - stage: Tests
