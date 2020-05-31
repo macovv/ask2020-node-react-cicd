@@ -16,11 +16,11 @@ jobs:
         - cd ../client && npm install
       script:
         - npm test && cd ../server && npm test
-#      - stage: Publish
-#       script: 
-#         - cd ./server && docker build -t server .
-#         - cd ../client && docker build -t client .
-#         - cd ../db && docker build -t db .  
+     - stage: Publish
+      script: 
+        - cd ./server && docker build -t server .
+        - cd ../client && docker build -t client .
+        - cd ../db && docker build -t db .  
 # before_script:
 #   - cd ./server && npm install
 #   - cd ../client && npm install
